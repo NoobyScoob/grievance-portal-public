@@ -37,7 +37,7 @@ class LoginFormContainer extends React.Component {
             if (res.status === 200) {
                 return result;
             } else if(res.status === 500) {
-                this.setState({loginErr: true});
+                this.setState({loginErr: true, disabled: false });
             }
         }
         catch(err) {
