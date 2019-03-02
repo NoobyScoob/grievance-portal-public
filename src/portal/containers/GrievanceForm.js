@@ -1,6 +1,7 @@
 import React from 'react';
 import GrievanceForm from './../components/GrievanceForm';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class GrievanceFormContainer extends React.Component {
 
@@ -139,4 +140,4 @@ const mapStateToProps = (status) => ({
     profile: status.profile,
 });
 
-export default connect(mapStateToProps)(GrievanceFormContainer);
+export default connect(mapStateToProps)( withRouter(GrievanceFormContainer));

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { withStyles, Button, List, ListItem, ListItemIcon, ListItemText, withWidth } from '@material-ui/core';
+import { withStyles, Button, List, ListItem, ListItemIcon, ListItemText, withWidth, Typography } from '@material-ui/core';
 import { CssBaseline, AppBar, Toolbar, Hidden, Drawer, IconButton } from '@material-ui/core';
 import compose from 'recompose/compose';
 import { connect } from 'react-redux';
@@ -9,7 +9,9 @@ import HomeIcon from '@material-ui/icons/HomeOutlined';
 import HelpIcon from '@material-ui/icons/HelpOutlineOutlined';
 import InfoIcon from '@material-ui/icons/InfoOutlined';
 import VisibilityIcon from '@material-ui/icons/VisibilityOutlined';
-import MailIcon from '@material-ui/icons/MailOutlined';
+import PersonIcon from '@material-ui/icons/Person';
+import GroupIcon from '@material-ui/icons/Group';
+import MailIcon from '@material-ui/icons/Mail';
 import UserMenu from './UserMenu';
 
 const DRAWER_WIDTH = 240;
@@ -138,14 +140,31 @@ class Navbar extends React.Component {
                                     View Status
                                 </Button>
                             }
-                            <Button onClick={ () => history.push(this.navRoutes[3]) } className={classes.navLinks}>
+                            {/* <Button onClick={ () => history.push(this.navRoutes[3]) } className={classes.navLinks}>
                                 <HelpIcon className={classes.navIcon} />
                                 Help
                             </Button>
                             <Button onClick={ () => history.push(this.navRoutes[4]) } className={classes.navLinks}>
                                 <MailIcon className={classes.navIcon} />
                                 Contact us
-                            </Button>
+                            </Button> */}
+                            {   !loggedIn &&
+                                <>
+                                    <PersonIcon className={classes.navIcon}/>
+                                    <a href="https://nervous-poincare-ddc415.netlify.com/" className={classes.navLinks}>
+                                        <Typography inline={true} color="inherit" variant="subtitle1">OFFICER LOGIN</Typography>
+                                    </a>
+                                </>
+                            }
+                            {
+                                !loggedIn &&
+                                <>
+                                    <GroupIcon className={classes.navIcon}/>
+                                    <a href="https://google.com" className={classes.navLinks}>
+                                        <Typography inline={true} color="inherit" variant="subtitle1">DIPP LOGIN</Typography>
+                                    </a>
+                                </>
+                            }
                         </Hidden>
 
                         <UserMenu />

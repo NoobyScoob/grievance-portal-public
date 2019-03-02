@@ -303,6 +303,16 @@ const GrievanceForm = (props) => {
                                     <Typography color="secondary">Only pdf file format is supported</Typography>
                                 </label>
 
+                                <TextField
+                                    id="reference"
+                                    name="reference"
+                                    type="number"
+                                    label="Reference Number(If any)"
+                                    margin="normal"
+                                    placeholder="Reference number of any submitted grievance"
+                                    variant="outlined"
+                                />
+
                                 <div >
                                     <Typography variant="body2">
                                         I hereby state that the facts mentioned above are true to the best of my knowledge and belief.

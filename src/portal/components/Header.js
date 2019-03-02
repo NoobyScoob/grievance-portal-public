@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core';
+import { withStyles, Hidden } from '@material-ui/core';
 import HeaderBottomShade from './../img/header-bottom-shade.png';
 
 const styles = theme => ({
@@ -45,6 +45,9 @@ const Header = (props) => {
                     GRIEVANCE REDRESSAL PORTAL
                 </Typography>
             </Typography>
+            <Hidden xsDown>
+                <img width="175" height="80" style={{margin: 'auto 0 auto auto'}} src={require('./../img/make-in-india-header.png')} alt="emblem"></img>
+            </Hidden>
         </header>
         
         </div>
