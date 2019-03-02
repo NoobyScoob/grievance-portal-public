@@ -24,7 +24,7 @@ class SignupFormContainer extends React.Component {
             let result = await res.json();
 
             if (res.status === 200) {
-                return result;
+                this.props.history.push('/');
             }
 
 
@@ -49,9 +49,7 @@ class SignupFormContainer extends React.Component {
             password: e.target.elements.password.value,
         };
         this.registerUser(formData)
-            .then( result => { 
-                this.props.history.push('/home');
-             });
+            
     }
 
     render() {
