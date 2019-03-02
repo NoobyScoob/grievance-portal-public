@@ -15,6 +15,7 @@ class LoginFormContainer extends React.Component {
         this.state = {
             loginErr: false,
             redirect: false,
+            disabled: false,
         }
     }
 
@@ -47,6 +48,7 @@ class LoginFormContainer extends React.Component {
 
     handleLoginSubmit(e) {
         e.preventDefault();
+        this.setState({disabled: true});
         const username = e.target.elements.username.value;
         const pass = e.target.elements.pass.value;
         this.authenticateUser(username, pass)
@@ -88,8 +90,9 @@ class LoginFormContainer extends React.Component {
             <Redirect push to="/user" />
             :
             <LoginForm
-                handleLoginSubmit={this.handleLoginSubmit}
+                handleLoginSubmit={ this.handleLoginSubmit }
                 loginErr={ this.state.loginErr }
+                disabled={ this.state.disabled }
             />
         );
     }

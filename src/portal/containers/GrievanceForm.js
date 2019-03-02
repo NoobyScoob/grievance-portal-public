@@ -23,18 +23,25 @@ class GrievanceFormContainer extends React.Component {
                 district: this.props.profile.district,
             },
             isGrievance: false,
+            dialogOpen: false,
+            message: 'true',
         }
 
         this.handleUserFormSubmit = this.handleUserFormSubmit.bind(this);
         this.handleGrievanceFormSubmit = this.handleGrievanceFormSubmit.bind(this);
         this.handleIsGrievanceToggle = this.handleIsGrievanceToggle.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.toggleDialogOpen = this.toggleDialogOpen.bind(this);
     }
 
     handleIsGrievanceToggle() {
         this.setState((prevState) => ({
             isGrievance: !prevState.isGrievance
         }));
+    }
+
+    toggleDialogOpen() {
+        this.setState({dialogOpen: false});
     }
 
     handleInputChange(e) {
@@ -65,6 +72,7 @@ class GrievanceFormContainer extends React.Component {
 
     handleGrievanceFormSubmit(e) {
         e.preventDefault();
+        this.setState({dialogOpen: true});
 
         const formData = new FormData(e.target);
 
@@ -86,7 +94,9 @@ class GrievanceFormContainer extends React.Component {
 
         // post request
         this.registerGrievance(formData)
-            .then(result => { console.log(result) });
+            .then(result => { 
+                this.setState({message: result.message});
+                });
     }
 
     async registerGrievance(formData) {
@@ -100,7 +110,7 @@ class GrievanceFormContainer extends React.Component {
             },
             body: formData
             });
-            const result = await res;
+            const result = await res.json();
             return result;
         } catch(err) {
             console.log(err);
@@ -117,6 +127,9 @@ class GrievanceFormContainer extends React.Component {
                 handleIsGrievanceToggle={this.handleIsGrievanceToggle}
                 userProfile={this.state.userProfile}
                 handleInputChange={this.handleInputChange}
+                dialogOpen={this.state.dialogOpen}
+                message={this.state.message}
+                toggleDialogOpen={this.toggleDialogOpen}
             />
         )
     }

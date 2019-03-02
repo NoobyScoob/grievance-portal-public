@@ -1,6 +1,7 @@
 import React from 'react';
 import { withStyles, FormControl, TextField, Typography, Button, Paper} from '@material-ui/core';
 import ConnErrDialog from './ConnErrDialog';
+import ResultDialog from './ResultDialog';
 
 const styles = theme => ({
     root: {
@@ -45,11 +46,12 @@ const styles = theme => ({
 const SignupForm = (props) => {
 
     const { classes } = props;
-    const { handleSignupSubmit } = props;
+    const { handleSignupSubmit, dialogOpen, message, toggleDialogOpen } = props;
 
     return (
         <Paper className={classes.root}>
-            <ConnErrDialog />   
+            <ResultDialog message={message} dialogOpen={dialogOpen} toggleDialogOpen={toggleDialogOpen} />
+            <ConnErrDialog />
             <form onSubmit={ handleSignupSubmit } className={classes.form}>
                     <FormControl fullWidth>
                         <Typography variant="h6" color="primary" align="center" >Public Signup</Typography>
@@ -106,46 +108,79 @@ const SignupForm = (props) => {
                             />
                         </div>
 
-                        <div className={classes.row}>
+                        <div >
                             <TextField
+                                style={{ marginRight: '1rem' }}
                                 className={classes.mobileField}
                                 id="country"
                                 label="Country"
+                                select
                                 margin="normal"
                                 variant="outlined"
                                 placeholder="Country"
                                 required="true"
-                            />
+                                SelectProps={{
+                                    native: true,
+                                }}
+                            >
+                                <option>India</option>
+                            </TextField>
                             <TextField
                                 className={classes.mobileField}
                                 id="state"
                                 label="State"
+                                select
                                 margin="normal"
                                 variant="outlined"
                                 required
                                 placeholder="State"
-                            />
+                                SelectProps={{
+                                    native: true,
+                                }}
+                            >
+                                <option>Telangana</option>
+                                <option>Uttar Pradesh</option>
+                            </TextField>
                         </div>
 
-                        <div className={classes.row}>
+                        <div>
                             <TextField
+                                style={{ marginRight: '1rem' }}
                                 className={classes.mobileField}
                                 id="district"
                                 label="District"
+                                select
                                 margin="normal"
                                 variant="outlined"
                                 placeholder="District"
                                 required="true"
-                            />
+                                SelectProps={{
+                                    native: true,
+                                }}
+                            >
+                                <option>Hyderabad</option>
+                                <option>RangaReddy</option>
+                                <option>Lucknow</option>
+                                <option>Kanpur</option>
+                            </TextField>
                             <TextField
                                 className={classes.mobileField}
                                 id="pincode"
                                 label="Pincode"
+                                select
                                 margin="normal"
                                 variant="outlined"
                                 required
                                 placeholder="Pincode"
-                            />
+                                SelectProps={{
+                                    native: true,
+                                }}
+                            >
+                                <option>500079</option>
+                                <option>500081</option>
+                                <option>208001</option>
+                                <option>226001</option>
+                            </TextField>
                         </div>
 
                         <div className={classes.row}>
@@ -157,7 +192,6 @@ const SignupForm = (props) => {
                                 variant="outlined"
                                 placeholder="Phone Number"
                                 required="true"
-                                
                             />
                             <TextField
                                 className={classes.mobileField}

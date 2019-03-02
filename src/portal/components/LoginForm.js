@@ -4,7 +4,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import CssBaseLine from '@material-ui/core/CssBaseline';
-import { Typography, withStyles, Link, TextField } from '@material-ui/core';
+import { Typography, withStyles, Link, TextField, CircularProgress } from '@material-ui/core';
 
 const styles = theme => ({
     root: {
@@ -48,7 +48,7 @@ const styles = theme => ({
 const LoginForm = (props) => {
 
     const { classes } = props;
-    const { handleLoginSubmit, loginErr } = props;
+    const { handleLoginSubmit, loginErr, disabled } = props;
 
     return(
         <div className={classes.root}>
@@ -94,13 +94,18 @@ const LoginForm = (props) => {
                     
                     <FormControl className={classes.formControl}>
                         <Button
+                            disabled={ disabled }
                             type="Submit"
                             fullWidth
                             variant="contained"
                             color="primary"
                             className={classes.customButton}
                         >
-                            Log In
+                            { 
+                                disabled ?
+                                <CircularProgress /> :
+                                'Login' 
+                            }
                         </Button>
                     </FormControl>
                     <FormControl className={classes.formControl}>

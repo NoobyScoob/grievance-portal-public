@@ -3,6 +3,7 @@ import { withStyles, Grid, Paper, TextField, FormControl, Typography, Button } f
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import BackArrowIcon from '@material-ui/icons/ArrowBackSharp';
 import ConnErrDialog from './ConnErrDialog';
+import ResultDialog from './ResultDialog';
 
 const styles = theme => ({
     paper: {
@@ -53,11 +54,15 @@ const GrievanceForm = (props) => {
             isGrievance,
             handleIsGrievanceToggle,
             userProfile,
-            handleInputChange
+            handleInputChange,
+            dialogOpen,
+            message,
+            toggleDialogOpen,
             } = props;
     
     return (
         <Grid container spacing={0}>
+            <ResultDialog message={message} dialogOpen={dialogOpen} toggleDialogOpen={toggleDialogOpen} />
             <ConnErrDialog />
             <Grid item xs={12} sm={10} md= {10} xl={10} style={{margin: 'auto'}}>
                 {
@@ -303,7 +308,7 @@ const GrievanceForm = (props) => {
                                         I hereby state that the facts mentioned above are true to the best of my knowledge and belief.
                                     </Typography>
                                     <Button type="submit" className={classes.btn} variant="contained" color="primary">
-                                        Submit
+                                        Agree and Submit
                                     </Button>
                                 </div>
                                 

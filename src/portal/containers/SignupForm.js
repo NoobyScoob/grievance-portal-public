@@ -7,12 +7,22 @@ import { withRouter } from 'react-router-dom';
 class SignupFormContainer extends React.Component {
     constructor() {
         super();
+        this.state = {
+            dialogOpen: false,
+            message: 'true'
+        }
         this.handleSignupSubmit = this.handleSignupSubmit.bind(this);
+        this.toggleDialogOpen = this.toggleDialogOpen.bind(this);
+    }
+
+    toggleDialogOpen() {
+        this.setState({dialogOpen: false});
     }
 
     async registerUser(data) {
         console.log(data);
         try {
+            this.setState({dialogOpen: true});
             const res = await fetch('https://grievance-portal-server-1.herokuapp.com/api/public/auth/register', {
                 method: 'POST',
                 mode: 'cors',
@@ -25,6 +35,9 @@ class SignupFormContainer extends React.Component {
 
             if (res.status === 200) {
                 this.props.history.push('/');
+            }
+            else {
+                this.setState({message: result.message});
             }
 
 
@@ -56,6 +69,9 @@ class SignupFormContainer extends React.Component {
         return(
             <SignupForm 
                 handleSignupSubmit={this.handleSignupSubmit}
+                dialogOpen={this.state.dialogOpen}
+                message={this.state.message}
+                toggleDialogOpen={this.toggleDialogOpen}
             />
         )
     }
