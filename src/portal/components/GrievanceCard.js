@@ -51,7 +51,7 @@ const GrievanceCard = (props) => {
 
             <CardActions style={{justifyContent: 'space-between'}}>
                 
-                    <Button variant="outlined" size="small">
+                    <Button onClick={ () => window.open(grievance.attachments[0], '_blank') } variant="outlined" size="small">
                         Attachment
                     </Button>
                     <Typography>

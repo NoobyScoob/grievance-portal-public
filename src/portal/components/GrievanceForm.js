@@ -275,6 +275,7 @@ const GrievanceForm = (props) => {
                                     variant="outlined"
                                 >
                                     <option>Department of Industrial Policy and Promotion</option>
+                                    <option>Department of agriculture</option>
                                 </TextField>
                                 <TextField
                                     id="description"
