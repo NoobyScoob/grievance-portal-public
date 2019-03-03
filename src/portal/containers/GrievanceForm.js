@@ -43,6 +43,7 @@ class GrievanceFormContainer extends React.Component {
 
     toggleDialogOpen() {
         this.setState({dialogOpen: false});
+        this.props.history.push('/user');
     }
 
     handleInputChange(e) {
