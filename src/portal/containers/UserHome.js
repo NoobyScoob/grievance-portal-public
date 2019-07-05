@@ -37,7 +37,7 @@ class UserHomeContainer extends React.Component {
     async getGrievances() {
         try {
             this.setState({grievanceList: [true]});
-            const res = await fetch('https://grievance-portal.herokuapp.com/api/public/submittedGrievances', {
+            const res = await fetch('https://grievance-portal-server-1.herokuapp.com/api/public/submittedGrievances', {
                 method: 'GET',
                 mode: 'cors',
                 headers: {
